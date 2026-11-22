@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Điều Khiển Quản Trị · The Gentleman Barber</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="min-h-screen flex flex-col bg-[#0c0f14] text-[#f8fafc]">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-[#263244] bg-[#141923] sticky top-0 z-40">
+    <div class="app-container h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-9 h-9 rounded-lg bg-[#d4af37] flex items-center justify-center text-[#0c0f14] font-black text-base shadow-sm">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div>
+          <h1 style="font-family: var(--font-serif);" class="text-base font-bold text-[#f8fafc] leading-tight">
+            BARBER MANAGEMENT PORTAL
+          </h1>
+          <p class="text-[11px] text-[#d4af37] font-medium">Bảng điều khiển quản trị lịch &amp; doanh thu</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <button id="btn-refresh-data" type="button" class="btn-secondary text-xs"
+          style="min-height: 38px; padding: 6px 14px;">
+          <i class="fas fa-sync-alt text-[#d4af37]"></i>
+          <span class="hidden sm:inline">Làm mới</span>
+        </button>
+
+        <button id="btn-reset-data" type="button"
+          class="btn-secondary text-xs border-[#ef4444]/30 text-[#ef4444] hover:border-[#ef4444]"
+          style="min-height: 38px; padding: 6px 14px;" title="Khôi phục lại dữ liệu ban đầu">
+          <i class="fas fa-undo"></i>
+          <span class="hidden sm:inline">Khôi phục mẫu</span>
+        </button>
+
+        <a href="index.html" class="btn-primary text-xs" style="min-height: 38px; padding: 6px 16px;">
+          <i class="fas fa-calendar-plus"></i>
+          <span>Trang Đặt Lịch</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <main class="flex-1 py-8">
+    <div class="app-container space-y-8">
+
+      <!-- STATS KPI CARDS -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" aria-label="Chỉ số hoạt động">
+
+        <!-- Card 1 -->
+        <div class="craft-panel p-5 border-[#263244] flex items-center justify-between">
+          <div>
+            <p class="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-1">Lịch Hẹn Hôm Nay</p>
+            <h3 id="stat-today-bookings" class="text-2xl font-bold text-[#f8fafc]">0</h3>
+            <p class="text-xs text-[#10b981] mt-1 flex items-center gap-1 font-medium">
+              <i class="fas fa-calendar-day"></i> Đang theo dõi
+            </p>
+          </div>
+          <div
+            class="w-12 h-12 rounded-lg bg-[#38bdf8]/10 border border-[#38bdf8]/20 flex items-center justify-center text-[#38bdf8] text-lg">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="craft-panel p-5 border-[#263244] flex items-center justify-between">
+          <div>
+            <p class="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-1">Chờ Phục Vụ</p>
+            <h3 id="stat-pending" class="text-2xl font-bold text-[#d4af37]">0</h3>
+            <p class="text-xs text-[#d4af37] mt-1 flex items-center gap-1 font-medium">
+              <i class="fas fa-hourglass-half"></i> Cần chuẩn bị ghế
+            </p>
+          </div>
+          <div
+            class="w-12 h-12 rounded-lg bg-[#d4af37]/10 border border-[#d4af37]/30 flex items-center justify-center text-[#d4af37] text-lg">
+            <i class="fas fa-user-clock"></i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="craft-panel p-5 border-[#263244] flex items-center justify-between">
+          <div>
+            <p class="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-1">Doanh Thu Hôm Nay</p>
+            <h3 id="stat-revenue" class="text-2xl font-bold text-[#10b981]">0 ₫</h3>
+            <p class="text-xs text-[#94a3b8] mt-1 flex items-center gap-1 font-medium">
+              <i class="fas fa-coins"></i> Các đơn hoàn tất
+            </p>
+          </div>
+          <div
+            class="w-12 h-12 rounded-lg bg-[#10b981]/10 border border-[#10b981]/20 flex items-center justify-center text-[#10b981] text-lg">
+            <i class="fas fa-receipt"></i>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="craft-panel p-5 border-[#263244] flex items-center justify-between">
+          <div>
+            <p class="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-1">Đã Hoàn Thành</p>
+            <h3 id="stat-completed" class="text-2xl font-bold text-[#f8fafc]">0</h3>
+            <p class="text-xs text-[#10b981] mt-1 flex items-center gap-1 font-medium">
+              <i class="fas fa-star text-[#d4af37]"></i> Đánh giá 4.9/5
+            </p>
+          </div>
+          <div
+            class="w-12 h-12 rounded-lg bg-[#a855f7]/10 border border-[#a855f7]/20 flex items-center justify-center text-[#a855f7] text-lg">
+            <i class="fas fa-check-double"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS CHARTS -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6" aria-label="Biểu đồ phân tích">
+        <!-- Revenue Bar Chart (7 Cols) -->
+        <div class="lg:col-span-7 craft-panel p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 style="font-family: var(--font-serif);"
+              class="text-base font-bold text-[#f8fafc] flex items-center gap-2">
+              <i class="fas fa-chart-bar text-[#d4af37]"></i> Doanh Số 5 Ngày Gần Nhất
+            </h3>
+            <span class="text-xs text-[#94a3b8]">Đơn vị: Nghìn VNĐ</span>
+          </div>
+          <div class="h-64">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Services Composition Chart (5 Cols) -->
+        <div class="lg:col-span-5 craft-panel p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 style="font-family: var(--font-serif);"
+              class="text-base font-bold text-[#f8fafc] flex items-center gap-2">
+              <i class="fas fa-chart-pie text-[#d4af37]"></i> Cơ Cấu Dịch Vụ
+            </h3>
+            <span class="text-xs text-[#94a3b8]">Tỷ lệ lượt đặt</span>
+          </div>
+          <div class="h-64">
+            <canvas id="servicesChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPOINTMENT TABLE -->
+      <section class="craft-panel overflow-hidden border-[#263244]" aria-labelledby="table-heading">
+        <div class="p-6 border-b border-[#263244] space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h2 id="table-heading" style="font-family: var(--font-serif);" class="text-xl font-bold text-[#f8fafc]">
+                Quản Lý Lịch Hẹn Đặt Chỗ
+              </h2>
+              <p class="text-xs text-[#94a3b8] mt-1">Cập nhật trạng thái phục vụ và phân bổ ca làm việc</p>
+            </div>
+          </div>
+
+          <!-- Filters Row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+            <div>
+              <label class="block text-xs font-semibold text-[#cbd5e1] mb-1.5" for="filter-date">
+                Lọc theo ngày:
+              </label>
+              <input type="date" id="filter-date" class="craft-input text-xs" style="min-height: 40px;">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-[#cbd5e1] mb-1.5" for="filter-status">
+                Trạng thái:
+              </label>
+              <select id="filter-status" class="craft-input text-xs" style="min-height: 40px;">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="confirmed">Chờ phục vụ (Confirmed)</option>
+                <option value="in-progress">Đang cắt tóc (In-Progress)</option>
+                <option value="completed">Đã hoàn thành (Completed)</option>
+                <option value="cancelled">Đã hủy (Cancelled)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-[#cbd5e1] mb-1.5" for="filter-stylist">
+                Lọc theo thợ:
+              </label>
+              <select id="filter-stylist" class="craft-input text-xs" style="min-height: 40px;">
+                <option value="all">Tất cả thợ cắt tóc</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-[#cbd5e1] mb-1.5" for="search-input">
+                Tìm kiếm tức thì:
+              </label>
+              <div class="relative">
+                <input type="text" id="search-input" placeholder="Tên, SĐT, Mã vé #..." class="craft-input pl-8 text-xs"
+                  style="min-height: 40px;">
+                <i class="fas fa-search absolute left-2.5 top-3 text-[#94a3b8] text-xs"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-[#cbd5e1]">
+            <thead class="bg-[#141923] text-xs uppercase text-[#94a3b8] border-b border-[#263244]">
+              <tr>
+                <th class="py-3 px-4">Mã Vé</th>
+                <th class="py-3 px-4">Khách Hàng</th>
+                <th class="py-3 px-4">Thợ Phụ Trách</th>
+                <th class="py-3 px-4">Khung Giờ</th>
+                <th class="py-3 px-4">Dịch Vụ &amp; Giá</th>
+                <th class="py-3 px-4">Trạng Thái</th>
+                <th class="py-3 px-4 text-right">Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="appointment-table-body">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="border-t border-[#263244] bg-[#0c0f14] py-6 text-center text-xs text-[#64748b]">
+    <div class="app-container">
+      <p>© 2026 The Gentleman Barber Club · Hệ thống quản lý salon trực tuyến</p>
+    </div>
+  </footer>
+
+  <script>
+    try {
+      var s = localStorage.getItem("barber_stylists");
+      if (s && !s.includes("Chủ tiệm")) {
+        localStorage.removeItem("barber_stylists");
+      }
+    } catch(e) {}
+  </script>
+  <script src="js/data.js?v=4.0"></script>
+  <script src="js/admin.js?v=4.0"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+# Render.com Blueprint Infrastructure as Code
+services:
+  - type: web
+    name: barber-booking-api
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

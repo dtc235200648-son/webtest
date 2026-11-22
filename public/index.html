@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE GENTLEMAN BARBER · Hệ Thống Đặt Lịch Hẹn Cắt Tóc VIP</title>
+  
+  <!-- Tailwind CSS Baseline -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Hallmark & UI/UX Pro Max Bespoke Stylesheet (v=3.0 Cache-Buster) -->
+  <link rel="stylesheet" href="css/style.css?v=3.0">
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+  <!-- TOP BARBER POLE ACCENT STRIPE -->
+  <div class="barber-pole-stripe"></div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 bg-[#0e131d]/95 backdrop-blur-md border-b border-[#222d3f]">
+    <div class="app-container h-20 flex items-center justify-between">
+      <!-- House Brand Mark -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#f3d67b] via-[#d4af37] to-[#9e7813] flex items-center justify-center text-[#07090e] text-2xl shadow-lg shadow-[#d4af37]/20 group-hover:scale-105 transition-transform">
+          <i class="fas fa-cut"></i>
+        </div>
+        <div>
+          <span style="font-family: var(--font-display);" class="text-xl sm:text-2xl font-black tracking-wider text-[#f8fafc] block leading-tight">
+            THE GENTLEMAN
+          </span>
+          <div class="flex items-center gap-2 mt-0.5">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-[#d4af37]">Atelier &amp; Grooming</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+            <span class="text-[10px] text-[#10b981] font-semibold">Đang nhận lịch</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Quick Actions -->
+      <div class="flex items-center gap-3">
+        <button id="btn-open-search" type="button" class="px-4 py-2.5 rounded-xl bg-[#131a27] hover:bg-[#1a2334] text-[#cbd5e1] hover:text-[#f8fafc] text-xs sm:text-sm font-semibold border border-[#222d3f] flex items-center gap-2 transition-all">
+          <i class="fas fa-search text-[#d4af37]"></i>
+          <span class="hidden sm:inline">Tra cứu lịch hẹn</span>
+        </button>
+
+        <a href="admin.html" class="px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] text-xs sm:text-sm font-bold border border-[#d4af37]/35 flex items-center gap-2 transition-all shadow-sm">
+          <i class="fas fa-shield-alt"></i>
+          <span class="hidden sm:inline">Bảng Quản Trị</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ATMOSPHERIC CINEMATIC HERO -->
+  <section class="hero-atmosphere">
+    <div class="app-container text-center relative z-10">
+      
+      <!-- Quality Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0e131d]/90 border border-[#d4af37]/40 text-[#f3d67b] text-xs font-semibold uppercase tracking-wider mb-6 shadow-md">
+        <i class="fas fa-crown text-[#d4af37]"></i>
+        <span>Không gian cắt tóc chuẩn phong cách quý ông</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 style="font-family: var(--font-display);" class="text-3xl sm:text-5xl md:text-6xl font-black text-[#f8fafc] max-w-4xl mx-auto leading-tight mb-5 tracking-tight">
+        Nghệ Thuật Cắt Tóc <br class="hidden sm:block"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#f3d67b] via-[#d4af37] to-[#e5be53]">
+          Thủ Công Chuẩn Mực
+        </span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-[#cbd5e1] text-sm sm:text-base leading-relaxed mb-8">
+        Không xếp hàng chờ đợi. Chọn thợ quen, chọn khung giờ lý tưởng và tận hưởng liệu trình chăm sóc tóc, cạo râu khăn nóng và massage bấm huyệt chỉ với 3 bước.
+      </p>
+
+      <!-- Trust Metrics -->
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs text-[#cbd5e1] mb-8 font-medium">
+        <div class="flex items-center gap-2 bg-[#131a27]/80 px-3.5 py-2 rounded-xl border border-[#222d3f]">
+          <i class="fas fa-star text-[#d4af37]"></i>
+          <span><b>4.9 / 5.0</b> (1,200+ đánh giá)</span>
+        </div>
+        <div class="flex items-center gap-2 bg-[#131a27]/80 px-3.5 py-2 rounded-xl border border-[#222d3f]">
+          <i class="fas fa-clock text-[#10b981]"></i>
+          <span><b>100%</b> Đúng giờ hẹn</span>
+        </div>
+        <div class="flex items-center gap-2 bg-[#131a27]/80 px-3.5 py-2 rounded-xl border border-[#222d3f]">
+          <i class="fas fa-user-shield text-[#38bdf8]"></i>
+          <span><b>3 Master Barbers</b> dày dạn kinh nghiệm</span>
+        </div>
+      </div>
+
+      <!-- Stepper Navigation -->
+      <nav class="booking-stepper" aria-label="Tiến trình đặt lịch">
+        <div class="step-item active" id="step-nav-1">
+          <div class="step-circle"><i class="fas fa-scissors"></i></div>
+          <span class="step-label">1. Chọn Gói Dịch Vụ</span>
+        </div>
+        <div class="step-item" id="step-nav-2">
+          <div class="step-circle"><i class="fas fa-user-clock"></i></div>
+          <span class="step-label">2. Chọn Thợ &amp; Giờ</span>
+        </div>
+        <div class="step-item" id="step-nav-3">
+          <div class="step-circle"><i class="fas fa-check"></i></div>
+          <span class="step-label">3. Nhận Vé &amp; Mã QR</span>
+        </div>
+      </nav>
+
+    </div>
+  </section>
+
+  <div id="booking-workflow-anchor"></div>
+
+  <!-- MAIN BOOKING EXPERIENCE -->
+  <main class="flex-1 py-12">
+    <div class="app-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT WORKFLOW CANVAS (8 Cols) -->
+        <div class="lg:col-span-8 space-y-8">
+
+          <!-- STEP 1: SERVICE CATALOG WITH CATEGORY FILTER -->
+          <section id="step-1-container" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#222d3f]">
+              <div>
+                <h2 style="font-family: var(--font-display);" class="text-2xl font-bold text-[#f8fafc]">
+                  Bảng Dịch Vụ Hoàng Gia
+                </h2>
+                <p class="text-xs sm:text-sm text-[#8b9bb4] mt-0.5">Chọn một hoặc kết hợp nhiều dịch vụ cùng lúc</p>
+              </div>
+              <span class="self-start sm:self-auto text-xs font-bold px-3 py-1 rounded-full bg-[#131a27] text-[#d4af37] border border-[#d4af37]/30">
+                Bước 1 / 3
+              </span>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div id="category-filter-tabs" class="category-tab-container">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Service Items Grid -->
+            <div id="services-list" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Step 1 Next Button -->
+            <div class="pt-6 flex justify-end border-t border-[#222d3f]">
+              <button id="btn-to-step-2" type="button" disabled class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#f3d67b] via-[#d4af37] to-[#b58d1f] text-[#07090e] font-extrabold text-sm sm:text-base shadow-lg shadow-[#d4af37]/25 flex items-center gap-2 transition-all opacity-50 cursor-not-allowed">
+                <span>Tiếp Tục Chọn Thợ &amp; Giờ Hẹn</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- STEP 2: STYLIST & SHIFT-BASED TIME SLOTS -->
+          <section id="step-2-container" class="hidden space-y-8">
+            <div class="flex items-center justify-between pb-4 border-b border-[#222d3f]">
+              <div>
+                <h2 style="font-family: var(--font-display);" class="text-2xl font-bold text-[#f8fafc]">
+                  Chọn Stylist &amp; Khung Giờ
+                </h2>
+                <p class="text-xs sm:text-sm text-[#8b9bb4] mt-0.5">Hệ thống đồng bộ lịch rảnh của thợ theo thời gian thực</p>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#131a27] text-[#d4af37] border border-[#d4af37]/30">
+                Bước 2 / 3
+              </span>
+            </div>
+
+            <!-- Stylists Grid -->
+            <div class="space-y-3">
+              <h3 class="text-xs font-bold text-[#cbd5e1] uppercase tracking-wider">1. Chọn người thợ phục vụ:</h3>
+              <div id="stylists-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Rendered via JS -->
+              </div>
+            </div>
+
+            <!-- Date Selector -->
+            <div class="space-y-3 pt-3">
+              <h3 class="text-xs font-bold text-[#cbd5e1] uppercase tracking-wider">2. Chọn ngày hẹn:</h3>
+              <div id="date-selector" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <!-- Rendered via JS -->
+              </div>
+            </div>
+
+            <!-- Shift-based Time Slots -->
+            <div class="space-y-3 pt-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-bold text-[#cbd5e1] uppercase tracking-wider">3. Chọn giờ hẹn mong muốn:</h3>
+                <span class="text-xs text-[#8b9bb4] italic">* Giờ gạch chéo là thợ đã kín lịch</span>
+              </div>
+              <div id="time-slots">
+                <!-- Rendered with Morning / Afternoon / Evening via JS -->
+              </div>
+            </div>
+
+            <!-- Step 2 Navigation Buttons -->
+            <div class="pt-6 flex items-center justify-between border-t border-[#222d3f]">
+              <button id="btn-back-to-1" type="button" class="px-6 py-3 rounded-xl bg-[#131a27] hover:bg-[#1a2334] text-[#cbd5e1] font-bold text-sm border border-[#222d3f] flex items-center gap-2 transition-all">
+                <i class="fas fa-arrow-left"></i>
+                <span>Quay lại</span>
+              </button>
+              <button id="btn-to-step-3" type="button" disabled class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#f3d67b] via-[#d4af37] to-[#b58d1f] text-[#07090e] font-extrabold text-sm sm:text-base shadow-lg shadow-[#d4af37]/25 flex items-center gap-2 transition-all opacity-50 cursor-not-allowed">
+                <span>Nhập Thông Tin Đặt Chỗ</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- STEP 3: CUSTOMER CONTACT & CONFIRMATION -->
+          <section id="step-3-container" class="hidden space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-[#222d3f]">
+              <div>
+                <h2 style="font-family: var(--font-display);" class="text-2xl font-bold text-[#f8fafc]">
+                  Thông Tin &amp; Xác Nhận Lịch Hẹn
+                </h2>
+                <p class="text-xs sm:text-sm text-[#8b9bb4] mt-0.5">Thông tin để nhận vé điện tử và nhân viên lễ tân đón tiếp</p>
+              </div>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#131a27] text-[#d4af37] border border-[#d4af37]/30">
+                Bước 3 / 3
+              </span>
+            </div>
+
+            <!-- Order Review Details -->
+            <div id="booking-review-details">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Contact Input Form -->
+            <div class="bg-[#131a27] p-6 rounded-2xl border border-[#222d3f] space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-[#cbd5e1] uppercase tracking-wider mb-2" for="cust-name">
+                    Họ và Tên Quý Khách <span class="text-[#ef4444]">*</span>
+                  </label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#8b9bb4]">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <input type="text" id="cust-name" placeholder="Ví dụ: Nguyễn Minh Tuấn" class="w-full pl-10 pr-4 py-3 rounded-xl bg-[#0e131d] border border-[#222d3f] text-white placeholder-[#54647c] focus:outline-none focus:border-[#d4af37] text-sm" required>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-[#cbd5e1] uppercase tracking-wider mb-2" for="cust-phone">
+                    Số Điện Thoại <span class="text-[#ef4444]">*</span>
+                  </label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#8b9bb4]">
+                      <i class="fas fa-phone-alt"></i>
+                    </span>
+                    <input type="tel" id="cust-phone" placeholder="0901234567" class="w-full pl-10 pr-4 py-3 rounded-xl bg-[#0e131d] border border-[#222d3f] text-white placeholder-[#54647c] focus:outline-none focus:border-[#d4af37] text-sm" required>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-[#cbd5e1] uppercase tracking-wider mb-2" for="cust-email">
+                  Địa Chỉ Email (Nhận bản sao vé điện tử)
+                </label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#8b9bb4]">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <input type="email" id="cust-email" placeholder="example@gmail.com" class="w-full pl-10 pr-4 py-3 rounded-xl bg-[#0e131d] border border-[#222d3f] text-white placeholder-[#54647c] focus:outline-none focus:border-[#d4af37] text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-[#cbd5e1] uppercase tracking-wider mb-2" for="cust-notes">
+                  Ghi chú hoặc yêu cầu kiểu tóc
+                </label>
+                <textarea id="cust-notes" rows="2" placeholder="Ví dụ: Da đầu hơi nhạy cảm, muốn giữ độ dài mái, cạo taper fade..." class="w-full p-3.5 rounded-xl bg-[#0e131d] border border-[#222d3f] text-white placeholder-[#54647c] focus:outline-none focus:border-[#d4af37] text-sm"></textarea>
+              </div>
+            </div>
+
+            <!-- Step 3 Navigation Buttons -->
+            <div class="pt-4 flex items-center justify-between">
+              <button id="btn-back-to-2" type="button" class="px-6 py-3 rounded-xl bg-[#131a27] hover:bg-[#1a2334] text-[#cbd5e1] font-bold text-sm border border-[#222d3f] flex items-center gap-2 transition-all">
+                <i class="fas fa-arrow-left"></i>
+                <span>Quay lại</span>
+              </button>
+              <button id="btn-confirm-booking" type="button" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#f3d67b] via-[#d4af37] to-[#b58d1f] text-[#07090e] font-black text-base shadow-xl shadow-[#d4af37]/30 flex items-center gap-2 transition-all hover:scale-[1.02]">
+                <i class="fas fa-check-circle"></i>
+                <span>XÁC NHẬN ĐẶT LỊCH NGAY</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- STEP SUCCESS: VIP BOARDING PASS & QR -->
+          <section id="step-success-container" class="hidden space-y-6">
+            <div id="success-ticket-content">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div class="flex flex-wrap gap-4 justify-center pt-2">
+              <button onclick="window.print()" type="button" class="px-6 py-3 rounded-xl bg-[#131a27] hover:bg-[#1a2334] text-[#f8fafc] text-sm font-bold border border-[#222d3f] flex items-center gap-2 shadow-md">
+                <i class="fas fa-print text-[#d4af37]"></i> In Hoá Đơn / Vé VIP
+              </button>
+              <button id="btn-book-another" type="button" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#f3d67b] via-[#d4af37] to-[#b58d1f] text-[#07090e] text-sm font-black flex items-center gap-2 shadow-lg shadow-[#d4af37]/25">
+                <i class="fas fa-plus"></i> Đặt Thêm Lịch Hẹn Khác
+              </button>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- RIGHT FLOATING INVOICE SIDEBAR (4 Cols) -->
+        <aside class="lg:col-span-4 sticky top-28 space-y-6">
+          <div class="luxury-receipt-panel">
+            <div class="receipt-header">
+              <div>
+                <h3 style="font-family: var(--font-display);" class="font-bold text-[#f8fafc] text-base tracking-wide">
+                  Chi Tiết Đặt Hẹn
+                </h3>
+                <span class="text-[11px] text-[#8b9bb4]">Tự động tính thời gian &amp; chi phí</span>
+              </div>
+              <div class="receipt-status-beacon">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse"></span>
+                <span>REAL-TIME</span>
+              </div>
+            </div>
+
+            <div class="py-4 space-y-3">
+              <div class="receipt-row">
+                <span class="text-[#8b9bb4]">Dịch vụ đã chọn:</span>
+                <span id="summary-services-count" class="font-bold text-[#f8fafc]">0 dịch vụ</span>
+              </div>
+              <div class="receipt-row">
+                <span class="text-[#8b9bb4]">Stylist phục vụ:</span>
+                <span id="summary-stylist-name" class="font-bold text-[#f3d67b]">Chưa chọn</span>
+              </div>
+              <div class="receipt-row">
+                <span class="text-[#8b9bb4]">Khung giờ hẹn:</span>
+                <span id="summary-time-slot" class="font-semibold text-[#cbd5e1]">Chưa chọn</span>
+              </div>
+              <div class="receipt-row">
+                <span class="text-[#8b9bb4]">Thời lượng ước tính:</span>
+                <span id="summary-total-duration" class="font-semibold text-[#cbd5e1]">0 phút</span>
+              </div>
+
+              <div class="receipt-total-box">
+                <div>
+                  <span class="text-xs text-[#8b9bb4] block">Tổng thanh toán:</span>
+                  <span class="text-[11px] text-[#10b981]">Thanh toán tại quầy sau cắt</span>
+                </div>
+                <span id="summary-total-price" class="text-2xl font-black text-[#d4af37]">0 ₫</span>
+              </div>
+            </div>
+
+            <!-- Salon Pledges -->
+            <div class="pt-4 border-t border-[#222d3f] space-y-2.5 text-xs text-[#8b9bb4]">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-shield-alt text-[#d4af37]"></i>
+                <span>Bảo hành phom tóc 7 ngày miễn phí</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-mug-hot text-[#d4af37]"></i>
+                <span>Phục vụ cà phê hạt mộc &amp; trà thảo mộc</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-clock text-[#d4af37]"></i>
+                <span>Cam kết phục vụ đúng giờ đã đặt hẹn</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Helpline Card -->
+          <div class="bg-[#131a27] p-5 rounded-2xl border border-[#222d3f] text-center text-xs space-y-1">
+            <p class="text-[#8b9bb4]">Cần tư vấn hỗ trợ đặc biệt?</p>
+            <p class="text-lg font-black text-[#d4af37] font-mono tracking-wider">HOTLINE: 1900 8888</p>
+            <p class="text-[#54647c]">Mở cửa đón khách: 08:30 – 21:00 (Hàng ngày)</p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- HAIRSTYLE LOOKBOOK SHOWCASE -->
+  <section class="py-16 border-t border-[#222d3f] bg-[#090d14]">
+    <div class="app-container">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#d4af37] bg-[#d4af37]/10 px-3.5 py-1 rounded-full border border-[#d4af37]/25">
+          Lookbook Thịnh Hành
+        </span>
+        <h2 style="font-family: var(--font-display);" class="text-2xl sm:text-4xl font-extrabold text-[#f8fafc] mt-3">
+          Kiểu Tóc Quý Ông Được Yêu Thích
+        </h2>
+        <p class="text-[#8b9bb4] text-xs sm:text-sm mt-2">
+          Được thiết kế và tạo phom tỉ mỉ bởi đội ngũ Master Barbers hàng đầu
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Lookbook 1 -->
+        <div class="lookbook-item">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Classic Pompadour" />
+          <div class="lookbook-overlay">
+            <h4 class="lookbook-title">Classic Pompadour</h4>
+            <p class="lookbook-desc">Lịch lãm, sắc sảo chuẩn quý ông công sở</p>
+          </div>
+        </div>
+
+        <!-- Lookbook 2 -->
+        <div class="lookbook-item">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" alt="Texture Crop & Fade" />
+          <div class="lookbook-overlay">
+            <h4 class="lookbook-title">Texture Crop &amp; Fade</h4>
+            <p class="lookbook-desc">Trẻ trung, năng động, dễ vuốt sáp giữ nếp</p>
+          </div>
+        </div>
+
+        <!-- Lookbook 3 -->
+        <div class="lookbook-item">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Modern Mullet" />
+          <div class="lookbook-overlay">
+            <h4 class="lookbook-title">Modern Mullet</h4>
+            <p class="lookbook-desc">Cá tính, phá cách với phần đuôi uốn nhẹ</p>
+          </div>
+        </div>
+
+        <!-- Lookbook 4 -->
+        <div class="lookbook-item">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=600&q=80" alt="Sidepart 7/3 Hàn Quốc" />
+          <div class="lookbook-overlay">
+            <h4 class="lookbook-title">Sidepart 7/3 Rũ</h4>
+            <p class="lookbook-desc">Tự nhiên, lãng tử phù hợp với đa số khuôn mặt</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH BOOKING MODAL -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-[#07090e]/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-[#131a27] w-full max-w-lg p-6 sm:p-8 rounded-2xl border border-[#222d3f] shadow-2xl relative">
+      <div class="flex items-center justify-between pb-4 border-b border-[#222d3f]">
+        <h3 style="font-family: var(--font-display);" class="text-lg font-bold text-[#f8fafc] flex items-center gap-2">
+          <i class="fas fa-search text-[#d4af37]"></i> Tra Cứu Lịch Hẹn Đã Đặt
+        </h3>
+        <button id="btn-close-search" type="button" class="text-[#8b9bb4] hover:text-white text-xl p-1">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="py-5 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#cbd5e1] uppercase mb-2" for="search-phone-input">
+            Số điện thoại của bạn:
+          </label>
+          <div class="flex gap-2">
+            <input type="tel" id="search-phone-input" placeholder="Nhập số điện thoại đã đặt..." class="flex-1 px-4 py-3 rounded-xl bg-[#0e131d] border border-[#222d3f] text-white text-sm focus:outline-none focus:border-[#d4af37]">
+            <button id="btn-do-search" type="button" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#f3d67b] via-[#d4af37] to-[#b58d1f] text-[#07090e] font-black text-sm">
+              Tìm kiếm
+            </button>
+          </div>
+        </div>
+
+        <div id="search-results" class="space-y-3 max-h-72 overflow-y-auto pt-2">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#222d3f] bg-[#07090e] py-10 text-center text-xs text-[#54647c]">
+    <div class="app-container">
+      <p class="text-[#cbd5e1] font-bold text-sm mb-1">THE GENTLEMAN BARBER CLUB · NGHỆ THUẬT CẮT TÓC THỦ CÔNG</p>
+      <p class="text-[#8b9bb4]">Hotline đặt lịch &amp; chăm sóc khách hàng: 1900 8888 · Mở cửa 08:30 – 21:00 hàng ngày</p>
+      <p class="mt-2 text-[#54647c]">© 2026 The Gentleman Barber Club. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts with Cache-Busting -->
+  <script>
+    try {
+      var s = localStorage.getItem("barber_stylists");
+      if (s && !s.includes("Chủ tiệm")) {
+        localStorage.removeItem("barber_stylists");
+      }
+    } catch(e) {}
+  </script>
+  <script src="js/data.js?v=4.0"></script>
+  <script src="js/app.js?v=4.0"></script>
+</body>
+</html>

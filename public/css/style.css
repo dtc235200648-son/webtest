@@ -1,0 +1,907 @@
+/* ==========================================================
+ * THE GENTLEMAN BARBER - BESPOKE CRAFTSMANSHIP DESIGN SYSTEM
+ * Hallmark Anti-AI-Slop & UI/UX Pro Max Certified
+ * ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  /* Surface Foundations */
+  --bg-canvas: #07090e;
+  --bg-surface: #0e131d;
+  --bg-card: #131a27;
+  --bg-card-hover: #1a2334;
+  --bg-elevated: #1e293b;
+
+  /* Typography Colors */
+  --text-main: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #8b9bb4;
+  --text-dim: #54647c;
+
+  /* Artisan Gold & Brass Palette */
+  --gold-300: #f3d67b;
+  --gold-400: #e5be53;
+  --gold-500: #d4af37;
+  --gold-600: #b58d1f;
+  --gold-gradient: linear-gradient(135deg, #f6df94 0%, #d4af37 50%, #9e7813 100%);
+  --gold-glow: 0 0 25px rgba(212, 175, 55, 0.28);
+  --gold-border: rgba(212, 175, 55, 0.32);
+  --gold-soft-bg: rgba(212, 175, 55, 0.08);
+
+  /* Status Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #38bdf8;
+
+  /* Border Tokens */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: #222d3f;
+
+  /* Typography */
+  --font-display: 'Cinzel', serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Floor 4: overflow-x: clip on html and body */
+html, body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Floor 6: Accessibility Focus Visible */
+*:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 3px;
+}
+
+/* Layout Container */
+.app-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Animated Barber Pole Stripe on Header */
+.barber-pole-stripe {
+  height: 3px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #dc2626,
+    #dc2626 12px,
+    #ffffff 12px,
+    #ffffff 24px,
+    #2563eb 24px,
+    #2563eb 36px,
+    #ffffff 36px,
+    #ffffff 48px
+  );
+  background-size: 200% 100%;
+  animation: barberPoleAnim 25s linear infinite;
+}
+
+@keyframes barberPoleAnim {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Hero Section with Cinematic Atmospheric Backdrop */
+.hero-atmosphere {
+  position: relative;
+  background-image: 
+    radial-gradient(ellipse at 50% 20%, rgba(212, 175, 55, 0.12) 0%, rgba(7, 9, 14, 0) 65%),
+    linear-gradient(to bottom, rgba(7, 9, 14, 0.72) 0%, rgba(7, 9, 14, 0.96) 80%, var(--bg-canvas) 100%),
+    url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center 30%;
+  padding-top: 60px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--border-medium);
+}
+
+/* Stepper Bar */
+.booking-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 680px;
+  margin: 32px auto 0 auto;
+  position: relative;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.step-item::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--border-medium);
+  z-index: 1;
+}
+
+.step-item:last-child::after {
+  display: none;
+}
+
+.step-item.active::after,
+.step-item.completed::after {
+  background: var(--gold-gradient);
+}
+
+.step-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-medium);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  z-index: 2;
+  transition: all 200ms ease;
+}
+
+.step-item.active .step-circle {
+  background: var(--gold-gradient);
+  border-color: var(--gold-400);
+  color: #07090e;
+  box-shadow: var(--gold-glow);
+}
+
+.step-item.completed .step-circle {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: #ffffff;
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.step-item.active .step-label {
+  color: var(--gold-300);
+  font-weight: 700;
+}
+
+.step-item.completed .step-label {
+  color: var(--text-secondary);
+}
+
+/* Category Filter Tabs (Pill Style) */
+.category-tab-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+}
+
+.category-tab-btn {
+  padding: 9px 18px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 180ms ease;
+}
+
+.category-tab-btn:hover {
+  border-color: var(--gold-border);
+  color: var(--text-main);
+  background-color: var(--bg-card);
+}
+
+.category-tab-btn.active {
+  background: var(--gold-gradient);
+  border-color: var(--gold-400);
+  color: #07090e;
+  font-weight: 700;
+  box-shadow: var(--gold-glow);
+}
+
+/* Luxury Service Card */
+.luxury-service-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  position: relative;
+}
+
+.luxury-service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-border);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-service-card.selected {
+  border-color: var(--gold-500);
+  background-color: #172030;
+  box-shadow: 0 0 0 1px var(--gold-500), var(--gold-glow);
+}
+
+.service-image-box {
+  height: 190px;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.luxury-service-card:hover .service-image-box img {
+  transform: scale(1.05);
+}
+
+.service-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(19, 26, 39, 0.95) 0%, rgba(19, 26, 39, 0.2) 60%, transparent 100%);
+}
+
+.service-category-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--gold-300);
+  border: 1px solid var(--gold-border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.service-duration-tag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-medium);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.service-selected-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: var(--gold-gradient);
+  color: #07090e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.service-content {
+  padding: 18px 20px 10px 20px;
+  flex: 1;
+}
+
+.service-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.service-price {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--gold-300);
+  white-space: nowrap;
+}
+
+.service-description {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.service-footer {
+  padding: 12px 20px 18px 20px;
+}
+
+.btn-select-toggle {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-medium);
+  transition: all 180ms ease;
+}
+
+.luxury-service-card:hover .btn-select-toggle:not(.btn-active) {
+  border-color: var(--gold-border);
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+}
+
+.btn-select-toggle.btn-active {
+  background: var(--gold-gradient);
+  color: #07090e;
+  border-color: var(--gold-400);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+}
+
+/* Stylist Card */
+.luxury-stylist-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  position: relative;
+}
+
+.luxury-stylist-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-border);
+  background-color: var(--bg-card-hover);
+}
+
+.luxury-stylist-card.selected {
+  border-color: var(--gold-500);
+  background-color: #172030;
+  box-shadow: 0 0 0 1px var(--gold-500), var(--gold-glow);
+}
+
+.stylist-avatar-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border: 2px solid var(--border-medium);
+}
+
+.luxury-stylist-card.selected .stylist-avatar-wrap {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.stylist-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stylist-any-badge {
+  position: absolute;
+  inset: 0;
+  background: rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-300);
+  font-size: 16px;
+}
+
+.stylist-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.stylist-name {
+  font-family: 'Plus Jakarta Sans', var(--font-sans), sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.stylist-rating {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gold-300);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.stylist-role {
+  font-size: 12px;
+  color: var(--gold-400);
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+.stylist-specialty {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.stylist-radio-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #07090e;
+  transition: all 180ms ease;
+}
+
+.luxury-stylist-card.selected .stylist-radio-check {
+  background: var(--gold-gradient);
+  border-color: var(--gold-400);
+}
+
+/* Date Selector Buttons */
+.luxury-date-btn {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 180ms ease;
+  min-height: 60px;
+}
+
+.luxury-date-btn:hover {
+  border-color: var(--gold-border);
+  background-color: var(--bg-card-hover);
+}
+
+.luxury-date-btn.selected {
+  background: var(--gold-gradient);
+  border-color: var(--gold-400);
+  color: #07090e;
+  font-weight: 800;
+  box-shadow: var(--gold-glow);
+}
+
+.date-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.date-subtitle {
+  font-size: 11px;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+/* Shift-based Time Slot Blocks */
+.slot-shift-header {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.luxury-slot-btn {
+  min-height: 48px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.luxury-slot-btn:hover:not(:disabled) {
+  border-color: var(--gold-border);
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+}
+
+.luxury-slot-btn.selected {
+  background: var(--gold-gradient);
+  border-color: var(--gold-400);
+  color: #07090e;
+  box-shadow: var(--gold-glow);
+}
+
+.luxury-slot-btn.booked, .luxury-slot-btn:disabled {
+  background-color: #0a0d14;
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  text-decoration: line-through;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.slot-booked-tag {
+  font-size: 10px;
+  margin-left: 5px;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-danger);
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+/* Review Order Card */
+.review-order-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-medium);
+  margin-bottom: 16px;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.review-label {
+  color: var(--text-muted);
+}
+
+.review-value {
+  color: var(--text-main);
+}
+
+.review-row.total-row {
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-medium);
+  margin-top: 6px;
+}
+
+.total-price-tag {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold-300);
+}
+
+/* Luxury Boarding Pass VIP Ticket */
+.luxury-boarding-pass {
+  background: linear-gradient(135deg, #131926 0%, #172032 100%);
+  border: 1px solid var(--gold-border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.pass-notch-left, .pass-notch-right {
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  background-color: var(--bg-canvas);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.pass-notch-left {
+  left: -14px;
+  transform: translateY(-50%);
+  border-right: 1px solid var(--gold-border);
+}
+
+.pass-notch-right {
+  right: -14px;
+  transform: translateY(-50%);
+  border-left: 1px solid var(--gold-border);
+}
+
+.pass-header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-medium);
+}
+
+.pass-status-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.pass-brand-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 1px;
+}
+
+.pass-ticket-code {
+  font-family: monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.pass-ticket-code span {
+  color: var(--gold-300);
+  font-size: 18px;
+}
+
+.pass-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .pass-body {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.pass-meta-group {
+  margin-bottom: 12px;
+}
+
+.pass-meta-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.pass-phone-badge {
+  display: inline-block;
+  margin-left: 6px;
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--gold-300);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 1px 8px;
+  border-radius: 4px;
+}
+
+.pass-time-highlight {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.pass-price-large {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--gold-300);
+}
+
+.qr-container-card {
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.qr-image {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 8px;
+}
+
+.qr-scan-instruction {
+  font-size: 10px;
+  font-weight: 800;
+  color: #07090e;
+  letter-spacing: 0.5px;
+}
+
+.pass-footer {
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-medium);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Floating Invoice / Summary Box */
+.luxury-receipt-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.receipt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-medium);
+}
+
+.receipt-status-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-300);
+  background-color: var(--gold-soft-bg);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--gold-border);
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.receipt-total-box {
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-medium);
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Lookbook Gallery & Perks */
+.lookbook-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 280px;
+  border: 1px solid var(--border-medium);
+}
+
+.lookbook-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.lookbook-item:hover img {
+  transform: scale(1.08);
+}
+
+.lookbook-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 9, 14, 0.9) 0%, rgba(7, 9, 14, 0.2) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+}
+
+.lookbook-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.lookbook-desc {
+  font-size: 12px;
+  color: var(--gold-300);
+  margin-top: 2px;
+}
