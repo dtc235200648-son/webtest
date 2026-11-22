@@ -78,7 +78,7 @@ const DEFAULT_STYLISTS = [
     role: "Senior VIP Barber",
     rating: 4.9,
     reviewsCount: 450,
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+    avatar: "images/duc-beckham.jpg",
     experience: "10 năm kinh nghiệm",
     specialty: "Classic Pompadour, Undercut vuốt sáp, Tỉa cạo râu chuẩn quý ông Anh Quốc",
     status: "available"
@@ -89,7 +89,7 @@ const DEFAULT_STYLISTS = [
     role: "Creative Barber & Colorist",
     rating: 4.9,
     reviewsCount: 380,
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+    avatar: "images/hung-hamet.jpg",
     experience: "6 năm kinh nghiệm",
     specialty: "Taper Fade sắc nét, Modern Mullet cá tính, Uốn sóng Texture thịnh hành",
     status: "available"
@@ -165,11 +165,12 @@ class BarberStorage {
   }
 
   init() {
-    // Force check: Ensure Sơn has role "Chủ tiệm"
+    // Force check: Ensure Sơn has role "Chủ tiệm" and stylists have updated photos
     try {
       const stored = JSON.parse(localStorage.getItem("barber_stylists") || "[]");
       const son = stored.find(s => s && s.name === "Sơn");
-      if (!son || !son.role || !son.role.includes("Chủ tiệm") || stored.length !== 3) {
+      const duc = stored.find(s => s && s.name === "Đức bếch khăm");
+      if (!son || !son.role || !son.role.includes("Chủ tiệm") || !duc || !duc.avatar || !duc.avatar.includes("duc-beckham.jpg") || stored.length !== 3) {
         localStorage.setItem("barber_stylists", JSON.stringify(DEFAULT_STYLISTS));
       }
     } catch (e) {

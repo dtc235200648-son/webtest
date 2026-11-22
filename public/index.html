@@ -45,7 +45,7 @@
           <span class="hidden sm:inline">Tra cứu lịch hẹn</span>
         </button>
 
-        <a href="admin.html" class="px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] text-xs sm:text-sm font-bold border border-[#d4af37]/35 flex items-center gap-2 transition-all shadow-sm">
+        <a id="admin-link" href="admin.html" class="px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] text-xs sm:text-sm font-bold border border-[#d4af37]/35 flex items-center gap-2 transition-all shadow-sm">
           <i class="fas fa-shield-alt"></i>
           <span class="hidden sm:inline">Bảng Quản Trị</span>
         </a>
@@ -477,12 +477,12 @@
   <script>
     try {
       var s = localStorage.getItem("barber_stylists");
-      if (s && !s.includes("Chủ tiệm")) {
+      if (s && (!s.includes("Chủ tiệm") || !s.includes("duc-beckham.jpg"))) {
         localStorage.removeItem("barber_stylists");
       }
     } catch(e) {}
   </script>
-  <script src="js/data.js?v=4.0"></script>
-  <script src="js/app.js?v=4.0"></script>
+  <script src="js/data.js?v=5.0"></script>
+  <script src="js/app.js?v=5.0"></script>
 </body>
 </html>

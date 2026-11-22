@@ -246,17 +246,22 @@
       <p>© 2026 The Gentleman Barber Club · Hệ thống quản lý salon trực tuyến</p>
     </div>
   </footer>
+<script>
+if (!localStorage.getItem('isAdmin')) {
+  window.location.href='index.html';
+}
+</script>
 
   <script>
     try {
       var s = localStorage.getItem("barber_stylists");
-      if (s && !s.includes("Chủ tiệm")) {
+      if (s && (!s.includes("Chủ tiệm") || !s.includes("duc-beckham.jpg"))) {
         localStorage.removeItem("barber_stylists");
       }
     } catch(e) {}
   </script>
-  <script src="js/data.js?v=4.0"></script>
-  <script src="js/admin.js?v=4.0"></script>
+  <script src="js/data.js?v=5.0"></script>
+  <script src="js/admin.js?v=5.0"></script>
 </body>
 
 </html>

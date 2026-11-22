@@ -13,7 +13,7 @@
   * Nỗi đau khách hàng: Chờ đợi lâu (30–60p), không được chọn thợ quen.
   * Nỗi đau của Salon: Trùng lịch (double-booking), ghi chép sổ sách thủ công dễ nhầm lẫn, khó thống kê doanh thu.
 * **Slide 3: Mục tiêu & Phạm vi bài toán**
-  * Input (Khách hàng, Dịch vụ, Thợ, Giờ hẹn) -> Xử lý (Chống xung đột khung giờ, sinh mã QR) -> Output (Vé điện tử, Lịch làm việc cho thợ, Dashboard doanh số).
+  * Input (Khách hàng, Dịch vụ, Thợ, Giờ hẹn) -> Xử lý (Chống xung đột khung giờ) -> Output (Vé điện tử, Lịch làm việc cho thợ, Dashboard doanh số).
 * **Slide 4: Kiến trúc hệ thống & Thiết kế CSDL**
   * Biểu đồ Use Case 3 tác nhân: Khách hàng, Stylist, Admin.
   * Lược đồ CSDL quan hệ ERD (Users, Stylists, Services, Appointments, Appointment_Services).
@@ -52,7 +52,7 @@
 * **Thao tác:**
   1. Chọn dịch vụ: Chọn **"Combo Cắt Gội Massage Đế Vương (160k)"** và **"Cạo Râu Truyền Thống (60k)"**. Chỉ cho thầy cô thấy thanh bên phải tự động nhảy tổng tiền là **220.000 ₫**.
   2. Bấm nút **"Tiếp Tục Chọn Thợ & Giờ"**.
-  3. Chọn thợ: Chọn **"Alex Tuấn (Master Barber)"**.
+  3. Chọn thợ: Chọn **"sơn (Master Barber)"**.
   4. Chọn giờ: Chọn khung giờ trống (Ví dụ: `15:00`).
   5. Bấm **"Tiếp Tục Điền Thông Tin"** -> Nhập Tên: *Nguyễn Văn Thắng*, SĐT: *0988776655*.
   6. Bấm **"Xác Nhận Đặt Lịch"**.
