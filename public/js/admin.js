@@ -77,6 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(amount);
   }
 
+  // Only count revenue when appointment is in-progress or completed (exclude confirmed/pending & cancelled)
+  function isRevenueStatus(status) {
+    return status === "in-progress" || status === "completed";
+  }
+
   // Populate filter stylists
   function initStylistsFilter() {
     const stylists = window.barberStorage.getStylists();
@@ -95,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pendingList = appointments.filter(a => a.status === "confirmed");
     const completedList = appointments.filter(a => a.status === "completed");
 
-    const todayRevenue = todayList.reduce((sum, a) => sum + (a.status === "completed" ? a.totalPrice : 0), 0);
+    const todayRevenue = todayList.reduce((sum, a) => sum + (isRevenueStatus(a.status) ? a.totalPrice : 0), 0);
 
     if (statsTodayBookings) statsTodayBookings.innerText = todayList.length;
     if (statsPending) statsPending.innerText = pendingList.length;
@@ -235,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const revenuePerDay = days.map(d => {
       return appointments
-        .filter(a => a.date === d && a.status !== "cancelled")
+        .filter(a => a.date === d && isRevenueStatus(a.status))
         .reduce((sum, a) => sum + a.totalPrice, 0) / 1000; // in thousands (K VND)
     });
 
