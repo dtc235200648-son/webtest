@@ -18,6 +18,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const ADMIN_USER = "admin";
   const ADMIN_PASS = "admin123";
 
+  // DOM Elements (must be declared before unlockDashboard is called)
+  const statsTodayBookings = document.getElementById("stat-today-bookings");
+  const statsPending = document.getElementById("stat-pending");
+  const statsRevenue = document.getElementById("stat-revenue");
+  const statsCompleted = document.getElementById("stat-completed");
+
+  const appointmentTableBody = document.getElementById("appointment-table-body");
+  const filterDateInput = document.getElementById("filter-date");
+  const filterStatusSelect = document.getElementById("filter-status");
+  const filterStylistSelect = document.getElementById("filter-stylist");
+  const searchInput = document.getElementById("search-input");
+
+  const btnResetData = document.getElementById("btn-reset-data");
+  const btnRefresh = document.getElementById("btn-refresh-data");
+
   function unlockDashboard() {
     if (loginGate) loginGate.classList.add("hidden");
     if (dashboardWrapper) dashboardWrapper.classList.remove("hidden");
@@ -56,21 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.reload();
     });
   }
-
-  // DOM Elements
-  const statsTodayBookings = document.getElementById("stat-today-bookings");
-  const statsPending = document.getElementById("stat-pending");
-  const statsRevenue = document.getElementById("stat-revenue");
-  const statsCompleted = document.getElementById("stat-completed");
-
-  const appointmentTableBody = document.getElementById("appointment-table-body");
-  const filterDateInput = document.getElementById("filter-date");
-  const filterStatusSelect = document.getElementById("filter-status");
-  const filterStylistSelect = document.getElementById("filter-stylist");
-  const searchInput = document.getElementById("search-input");
-
-  const btnResetData = document.getElementById("btn-reset-data");
-  const btnRefresh = document.getElementById("btn-refresh-data");
 
   // Format currency
   function formatMoney(amount) {

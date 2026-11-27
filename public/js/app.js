@@ -509,7 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.barberStorage.saveAppointment(newBooking);
     state.latestBooking = newBooking;
 
-    // Render Success Ticket
+    // Render Success Ticket & transition to Step 4
     renderSuccessTicket(newBooking);
     goToStep(4);
   });
@@ -592,30 +592,34 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // Generate scannable QR code with full ticket info
+    // Generate scannable QR code with full ticket info (wrapped in try/catch so it never blocks step transition)
     const qrContainer = document.getElementById("booking-qr-code");
     if (qrContainer) {
       const qrPlainText = [
-        "THE GENTLEMAN BARBER CLUB",
+        "THE GENTLEMAN BARBER",
         `Ma ve: #${booking.id}`,
-        `Khach hang: ${booking.customerName} (${booking.customerPhone})`,
-        `Stylist: ${booking.stylistName}`,
-        `Thoi gian: ${booking.time} - Ngay ${booking.date}`,
+        `Khach: ${booking.customerName} (${booking.customerPhone})`,
+        `Tho: ${booking.stylistName}`,
+        `Gio: ${booking.time} (${booking.date})`,
         `Dich vu: ${booking.services.join(", ")}`,
-        `Tong tien: ${formatMoney(booking.totalPrice)}`
+        `Tong: ${formatMoney(booking.totalPrice)}`
       ].join("\n");
 
-      if (typeof QRCode !== "undefined") {
-        qrContainer.innerHTML = "";
-        new QRCode(qrContainer, {
-          text: unescape(encodeURIComponent(qrPlainText)),
-          width: 156,
-          height: 156,
-          colorDark: "#07090e",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.M
-        });
-      } else {
+      try {
+        if (typeof QRCode !== "undefined") {
+          qrContainer.innerHTML = "";
+          new QRCode(qrContainer, {
+            text: unescape(encodeURIComponent(qrPlainText)),
+            width: 156,
+            height: 156,
+            colorDark: "#07090e",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.L
+          });
+        } else {
+          throw new Error("QRCode library not loaded");
+        }
+      } catch (err) {
         const encoded = encodeURIComponent(qrPlainText);
         qrContainer.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=156x156&data=${encoded}" alt="QR Code #${booking.id}" width="156" height="156" class="rounded" />`;
       }

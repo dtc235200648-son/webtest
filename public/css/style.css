@@ -910,3 +910,120 @@ html, body {
   color: var(--gold-300);
   margin-top: 2px;
 }
+
+/* =====================================================
+   ADMIN DASHBOARD COMPONENTS & DARK INPUTS
+   ===================================================== */
+.craft-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.craft-input {
+  width: 100%;
+  background-color: #0b0f17;
+  border: 1px solid #263244;
+  color: #f8fafc;
+  border-radius: 10px;
+  padding: 8px 12px;
+  outline: none;
+  color-scheme: dark;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.craft-input.pl-8 {
+  padding-left: 2rem;
+}
+
+.craft-input.pl-10 {
+  padding-left: 2.5rem;
+}
+
+.craft-input::placeholder {
+  color: #64748b;
+}
+
+.craft-input:focus {
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.craft-input option {
+  background-color: #0e131d;
+  color: #f8fafc;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f3d67b 0%, #d4af37 50%, #b58d1f 100%);
+  color: #07090e;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #131a27;
+  border: 1px solid #263244;
+  color: #cbd5e1;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+
+.btn-secondary:hover {
+  background: #1a2334;
+  border-color: var(--gold-border);
+  color: #f8fafc;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge-confirmed {
+  background: rgba(212, 175, 55, 0.14);
+  color: #f3d67b;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.badge-in-progress {
+  background: rgba(56, 189, 248, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.badge-completed {
+  background: rgba(16, 185, 129, 0.14);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.badge-cancelled {
+  background: rgba(239, 68, 68, 0.14);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
