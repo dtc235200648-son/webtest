@@ -6,6 +6,56 @@
 document.addEventListener("DOMContentLoaded", () => {
   let revenueChartInstance = null;
   let servicesChartInstance = null;
+  let dashboardInitialized = false;
+
+  // Auth Gate Elements
+  const loginGate = document.getElementById("admin-login-gate");
+  const dashboardWrapper = document.getElementById("admin-dashboard-wrapper");
+  const loginForm = document.getElementById("admin-login-form");
+  const loginError = document.getElementById("admin-login-error");
+  const btnLogout = document.getElementById("btn-admin-logout");
+
+  const ADMIN_USER = "admin";
+  const ADMIN_PASS = "admin123";
+
+  function unlockDashboard() {
+    if (loginGate) loginGate.classList.add("hidden");
+    if (dashboardWrapper) dashboardWrapper.classList.remove("hidden");
+    if (!dashboardInitialized) {
+      dashboardInitialized = true;
+      initStylistsFilter();
+      renderKPIs();
+      renderAppointments();
+      renderCharts();
+    }
+  }
+
+  if (localStorage.getItem("isAdmin") === "true") {
+    unlockDashboard();
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const username = document.getElementById("admin-username").value.trim();
+      const password = document.getElementById("admin-password").value;
+
+      if (username === ADMIN_USER && password === ADMIN_PASS) {
+        if (loginError) loginError.classList.add("hidden");
+        localStorage.setItem("isAdmin", "true");
+        unlockDashboard();
+      } else {
+        if (loginError) loginError.classList.remove("hidden");
+      }
+    });
+  }
+
+  if (btnLogout) {
+    btnLogout.addEventListener("click", () => {
+      localStorage.removeItem("isAdmin");
+      window.location.reload();
+    });
+  }
 
   // DOM Elements
   const statsTodayBookings = document.getElementById("stat-today-bookings");
@@ -298,9 +348,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Init
-  initStylistsFilter();
-  renderKPIs();
-  renderAppointments();
-  renderCharts();
+  // Dashboard initialization is triggered by unlockDashboard() upon authentication
 });

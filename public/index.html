@@ -9,9 +9,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome Icons 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- QRCode.js for scannable VIP Ticket QR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   
-  <!-- Hallmark & UI/UX Pro Max Bespoke Stylesheet (v=3.0 Cache-Buster) -->
-  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <!-- Hallmark & UI/UX Pro Max Bespoke Stylesheet (v=6.0 Cache-Buster) -->
+  <link rel="stylesheet" href="css/style.css?v=6.0">
 </head>
 <body class="min-h-screen flex flex-col antialiased">
 
@@ -45,7 +47,7 @@
           <span class="hidden sm:inline">Tra cứu lịch hẹn</span>
         </button>
 
-        <a id="admin-link" href="admin.html" class="px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] text-xs sm:text-sm font-bold border border-[#d4af37]/35 flex items-center gap-2 transition-all shadow-sm">
+        <a id="admin-link" href="admin.html" class="hidden px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-[#d4af37] text-xs sm:text-sm font-bold border border-[#d4af37]/35 items-center gap-2 transition-all shadow-sm">
           <i class="fas fa-shield-alt"></i>
           <span class="hidden sm:inline">Bảng Quản Trị</span>
         </a>
@@ -469,7 +471,7 @@
     <div class="app-container">
       <p class="text-[#cbd5e1] font-bold text-sm mb-1">THE GENTLEMAN BARBER CLUB · NGHỆ THUẬT CẮT TÓC THỦ CÔNG</p>
       <p class="text-[#8b9bb4]">Hotline đặt lịch &amp; chăm sóc khách hàng: 1900 8888 · Mở cửa 08:30 – 21:00 hàng ngày</p>
-      <p class="mt-2 text-[#54647c]">© 2026 The Gentleman Barber Club. All rights reserved.</p>
+      <p class="mt-2 text-[#54647c]">© 2026 The Gentleman Barber Club. All rights reserved. · <a href="admin.html" class="hover:text-[#d4af37] transition-colors">Cổng Quản Trị</a></p>
     </div>
   </footer>
 
@@ -480,9 +482,16 @@
       if (s && (!s.includes("Chủ tiệm") || !s.includes("duc-beckham.jpg"))) {
         localStorage.removeItem("barber_stylists");
       }
+      if (localStorage.getItem("isAdmin") === "true") {
+        var adminLink = document.getElementById("admin-link");
+        if (adminLink) {
+          adminLink.classList.remove("hidden");
+          adminLink.classList.add("flex");
+        }
+      }
     } catch(e) {}
   </script>
-  <script src="js/data.js?v=5.0"></script>
-  <script src="js/app.js?v=5.0"></script>
+  <script src="js/data.js?v=6.0"></script>
+  <script src="js/app.js?v=6.0"></script>
 </body>
 </html>

@@ -24,6 +24,65 @@
 
 <body class="min-h-screen flex flex-col bg-[#0c0f14] text-[#f8fafc]">
 
+  <!-- ADMIN LOGIN GATE (Shown when not authenticated) -->
+  <div id="admin-login-gate" class="min-h-screen flex items-center justify-center p-4 bg-[#07090e]">
+    <div class="w-full max-w-md craft-panel p-8 border-[#d4af37]/30 shadow-2xl space-y-6">
+      <div class="text-center space-y-2">
+        <div class="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-[#f3d67b] via-[#d4af37] to-[#9e7813] flex items-center justify-center text-[#07090e] text-2xl shadow-lg shadow-[#d4af37]/20">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h1 style="font-family: var(--font-serif);" class="text-xl font-bold text-[#f8fafc] tracking-wide pt-2">
+          ĐĂNG NHẬP QUẢN TRỊ VIÊN
+        </h1>
+        <p class="text-xs text-[#94a3b8]">THE GENTLEMAN BARBER · Cổng quản lý lịch hẹn &amp; doanh thu</p>
+      </div>
+
+      <form id="admin-login-form" class="space-y-4">
+        <div>
+          <label for="admin-username" class="block text-xs font-semibold text-[#cbd5e1] uppercase tracking-wider mb-1.5">
+            Tài khoản
+          </label>
+          <div class="relative">
+            <input type="text" id="admin-username" required autocomplete="username" placeholder="Nhập tài khoản quản trị"
+              class="craft-input pl-10 text-sm" style="min-height: 44px;">
+            <i class="fas fa-user-shield absolute left-3.5 top-3.5 text-[#94a3b8] text-sm"></i>
+          </div>
+        </div>
+
+        <div>
+          <label for="admin-password" class="block text-xs font-semibold text-[#cbd5e1] uppercase tracking-wider mb-1.5">
+            Mật khẩu
+          </label>
+          <div class="relative">
+            <input type="password" id="admin-password" required autocomplete="current-password" placeholder="Nhập mật khẩu"
+              class="craft-input pl-10 text-sm" style="min-height: 44px;">
+            <i class="fas fa-lock absolute left-3.5 top-3.5 text-[#94a3b8] text-sm"></i>
+          </div>
+        </div>
+
+        <div id="admin-login-error" class="hidden p-3 rounded-lg bg-[#ef4444]/10 border border-[#ef4444]/30 text-[#ef4444] text-xs font-medium flex items-center gap-2">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>Tài khoản hoặc mật khẩu không chính xác!</span>
+        </div>
+
+        <button type="submit" class="w-full btn-primary justify-center text-sm font-bold" style="min-height: 44px;">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Đăng Nhập Bảng Quản Trị</span>
+        </button>
+      </form>
+
+      <div class="pt-4 border-t border-[#263244] text-center">
+        <a href="index.html" class="inline-flex items-center gap-2 text-xs text-[#94a3b8] hover:text-[#d4af37] transition-colors">
+          <i class="fas fa-arrow-left"></i>
+          <span>Quay lại trang đặt lịch của khách</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD WRAPPER (Hidden until authenticated) -->
+  <div id="admin-dashboard-wrapper" class="hidden min-h-screen flex flex-col">
+
   <!-- TOP HEADER -->
   <header class="border-b border-[#263244] bg-[#141923] sticky top-0 z-40">
     <div class="app-container h-16 flex items-center justify-between">
@@ -58,6 +117,13 @@
           <i class="fas fa-calendar-plus"></i>
           <span>Trang Đặt Lịch</span>
         </a>
+
+        <button id="btn-admin-logout" type="button"
+          class="btn-secondary text-xs border-[#64748b]/40 text-[#cbd5e1] hover:border-[#ef4444] hover:text-[#ef4444]"
+          style="min-height: 38px; padding: 6px 14px;" title="Đăng xuất khỏi trang quản trị">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="hidden sm:inline">Đăng xuất</span>
+        </button>
       </div>
     </div>
   </header>
@@ -246,11 +312,7 @@
       <p>© 2026 The Gentleman Barber Club · Hệ thống quản lý salon trực tuyến</p>
     </div>
   </footer>
-<script>
-if (!localStorage.getItem('isAdmin')) {
-  window.location.href='index.html';
-}
-</script>
+  </div>
 
   <script>
     try {
@@ -260,8 +322,8 @@ if (!localStorage.getItem('isAdmin')) {
       }
     } catch(e) {}
   </script>
-  <script src="js/data.js?v=5.0"></script>
-  <script src="js/admin.js?v=5.0"></script>
+  <script src="js/data.js?v=6.0"></script>
+  <script src="js/admin.js?v=6.0"></script>
 </body>
 
 </html>

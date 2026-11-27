@@ -530,7 +530,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="pass-ticket-code">MÃ VÉ VIP: <span>#${booking.id}</span></div>
         </div>
 
-        <div class="pass-body" style="max-width: 600px; margin: 0 auto; padding: 24px 0;">
+        <div class="pass-body">
           <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#222d3f] gap-1">
               <span class="pass-meta-label">Quý khách đặt lịch:</span>
@@ -573,6 +573,16 @@ document.addEventListener("DOMContentLoaded", () => {
               <span class="pass-price-large">${formatMoney(booking.totalPrice)}</span>
             </div>
           </div>
+
+          <div class="bg-[#0b0f17] border border-[#d4af37]/35 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-inner">
+            <div id="booking-qr-code" class="bg-white p-3 rounded-xl shadow-md mb-3 inline-flex items-center justify-center"></div>
+            <div class="text-xs font-bold uppercase tracking-wider text-[#d4af37] mb-1">
+              <i class="fas fa-qrcode mr-1"></i> Mã QR Check-in Vé VIP
+            </div>
+            <p class="text-[11px] text-[#8b9bb4] leading-relaxed">
+              Đưa mã này cho lễ tân hoặc quét bằng Camera / Zalo để xem nhanh thông tin vé <b class="text-white">#${booking.id}</b>
+            </p>
+          </div>
         </div>
 
         <div class="pass-footer">
@@ -581,6 +591,35 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
     `;
+
+    // Generate scannable QR code with full ticket info
+    const qrContainer = document.getElementById("booking-qr-code");
+    if (qrContainer) {
+      const qrPlainText = [
+        "THE GENTLEMAN BARBER CLUB",
+        `Ma ve: #${booking.id}`,
+        `Khach hang: ${booking.customerName} (${booking.customerPhone})`,
+        `Stylist: ${booking.stylistName}`,
+        `Thoi gian: ${booking.time} - Ngay ${booking.date}`,
+        `Dich vu: ${booking.services.join(", ")}`,
+        `Tong tien: ${formatMoney(booking.totalPrice)}`
+      ].join("\n");
+
+      if (typeof QRCode !== "undefined") {
+        qrContainer.innerHTML = "";
+        new QRCode(qrContainer, {
+          text: unescape(encodeURIComponent(qrPlainText)),
+          width: 156,
+          height: 156,
+          colorDark: "#07090e",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } else {
+        const encoded = encodeURIComponent(qrPlainText);
+        qrContainer.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=156x156&data=${encoded}" alt="QR Code #${booking.id}" width="156" height="156" class="rounded" />`;
+      }
+    }
   }
 
   btnBookAnother.addEventListener("click", () => {
